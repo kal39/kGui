@@ -21,7 +21,7 @@ void change_label_text(ComponentId id, char *format, ...) {
 	memcpy(l->text, buff, strlen(buff) + 1);
 }
 
-void draw_label(Label *label, int x, int y) {
-	DrawText(label->text, x + kGS.settings.borderSize, y + kGS.settings.borderSize, kGS.settings.fontSize,
-			 kGS.settings.fontColor);
+void _draw_label(Component *component, int x, int y) {
+	DrawText(component->data.label.text, x + kGS.settings.borderSize, y + kGS.settings.borderSize,
+			 kGS.settings.fontSize, kGS.settings.fontColor);
 }

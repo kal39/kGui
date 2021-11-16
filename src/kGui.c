@@ -13,6 +13,10 @@ void init_gui() {
 
 	kGS.settings.borderSize = 4;
 	kGS.settings.borderColor = DARKGRAY;
+
+	kGS.settings.buttonBorderSize = 2;
+	kGS.settings.buttonReleasedColor = RAYWHITE;
+	kGS.settings.buttonPressedColor = GRAY;
 }
 
 void draw_gui() {

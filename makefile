@@ -56,6 +56,7 @@ $(BUILD):
 $(BIN): $(BUILD)
 	$(CC) -c $(SRC)/kGui.c -o $(BUILD)/kGui.a
 	$(CC) -c $(SRC)/global.c -o $(BUILD)/global.a
+	$(CC) -c $(SRC)/rectangle.c -o $(BUILD)/rectangle.a
 	$(CC) -c $(SRC)/component.c -o $(BUILD)/component.a
 	$(CC) -c $(SRC)/window.c -o $(BUILD)/window.a
 	$(CC) -c $(SRC)/label.c -o $(BUILD)/label.a

@@ -18,6 +18,7 @@ typedef struct TextBox {
 typedef struct Button {
 	char *text;
 	void (*fn)();
+	int pressed;
 } Button;
 
 typedef struct Component {
@@ -51,6 +52,10 @@ typedef struct Settings {
 
 	int borderSize;
 	Color borderColor;
+
+	int buttonBorderSize;
+	Color buttonReleasedColor;
+	Color buttonPressedColor;
 
 } Settings;
 

@@ -1,19 +1,19 @@
 #include "kGui.h"
 
 int main(void) {
-	InitWindow(GetScreenWidth(), GetScreenWidth(), "test");
+	InitWindow(800, 600, "test");
 	SetTargetFPS(30);
 	SetExitKey(0);
 	// if (!IsWindowFullscreen()) ToggleFullscreen();
 
 	init_gui();
-	WindowId w1 = create_window(0, 0, 2, 2, "AAA");
+	WindowId w1 = create_window(20, 20, 2, 2, "Test");
 
-	Component c1 = create_label(100, 40, "label 1");
-	ComponentId id1 = add_component(w1, 0, 0, c1);
+	Component l1 = create_label(100, 40, "label 1");
+	ComponentId id1 = add_component(w1, 0, 0, l1);
 
-	Component c2 = create_label(100, 40, "label 2");
-	ComponentId id2 = add_component(w1, 1, 0, c2);
+	Component b1 = create_button(100, 40, "button", NULL);
+	ComponentId id2 = add_component(w1, 1, 0, b1);
 
 	int i = 0;
 	while (1) {
