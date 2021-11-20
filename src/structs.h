@@ -1,31 +1,38 @@
 typedef int WindowId;
+typedef int ComponentID;
 
-typedef struct ComponentId {
-	int winIdx;
-	int compIdx;
-} ComponentId;
+typedef struct Component Component;
+typedef struct Grid {
+	int cols;
+	int rows;
+
+	int cellWidth;
+	int cellHeight;
+
+	ComponentID *components;
+} Grid;
 
 typedef struct Label {
 	char *text;
 } Label;
 
 typedef struct TextBox {
-	int editable;
 	char *text;
 	void (*fn)(char *);
 } TextBox;
 
 typedef struct Button {
 	char *text;
+	int width;
+	int height;
 	void (*fn)();
 	int pressed;
 } Button;
 
 typedef struct Component {
-	int width;
-	int height;
 	int type;
 	union {
+		Grid grid;
 		Label label;
 		TextBox texbox;
 		Button button;
@@ -36,12 +43,12 @@ typedef struct Window {
 	int x, y;
 	char *title;
 
-	int cols, rows;
-	int gridWidth, gridHeight;
-	Component *components;
+	ComponentID grid;
 } Window;
 
 typedef struct Settings {
+	int padding;
+
 	int fontSize;
 	Color fontColor;
 
@@ -62,6 +69,9 @@ typedef struct Settings {
 typedef struct KGuiState {
 	int windowCount;
 	Window *windows;
+
+	int componentCount;
+	Component *components;
 
 	Settings settings;
 } KGuiState;

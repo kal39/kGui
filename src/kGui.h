@@ -24,30 +24,30 @@ void init_gui();
 void draw_gui();
 
 // window
-WindowId create_window(int x, int y, int cols, int rows, char *title);
-void _draw_window();
+ComponentID create_window(int x, int y, int cols, int rows, int cellWidth, int cellHeight, char *title);
+void _draw_window(Window w);
 
-// component
-ComponentId add_component(WindowId id, int x, int y, Component c);
-void remove_component(ComponentId id);
-ComponentId get_component_id(WindowId id, int x, int y);
+//
+
+ComponentID add_component(ComponentID destination, int x, int y, Component component);
+void change_component_text(ComponentID compId, char *format, ...);
+Component _get_component(ComponentID compId);
+void _draw_component(ComponentID compID, int x, int y);
+
+// grid
+Component create_grid(int cols, int rows, int cellWidth, int cellHeight);
+void _draw_grid(Grid grid, int x, int y);
 
 // label
 Component create_label(int width, int height, char *text);
-void change_label_text(ComponentId id, char *format, ...);
-void _draw_label(Component *component, int x, int y);
+void _draw_label(Label label, int x, int y);
 
-// // textbox
-// create_textbox(char *text, char alignment, int width, int height);
-// void draw_textbox(Window w);
-// create_editable_textbox(char *text, char alignment, int width, int height, void(*fn));
-// change_text(int textBox, char *newText);
+// textbox
 
-// // button
+// button
 Component create_button(int width, int height, char *text, void (*fn)());
-void change_button_text(ComponentId id, char *format, ...);
-void _draw_button(Component *component, int x, int y);
+void _draw_button(Button button, int x, int y);
 
-// // slider
+// slider
 
 #endif

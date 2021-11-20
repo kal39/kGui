@@ -2,6 +2,9 @@
 
 void init_gui() {
 	kGS.windowCount = 0;
+	kGS.componentCount = 0;
+
+	kGS.settings.padding = 4;
 
 	kGS.settings.fontColor = BLACK;
 	kGS.settings.fontSize = 20;
@@ -24,7 +27,7 @@ void draw_gui() {
 	ClearBackground(BLACK);
 
 	for (int i = 0; i < kGS.windowCount; i++) {
-		_draw_window(i);
+		_draw_window(kGS.windows[i]);
 	}
 
 	EndDrawing();
