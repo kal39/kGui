@@ -63,6 +63,7 @@ $(BIN): $(BUILD)
 	$(CC) -c $(SRC)/label.c -o $(BUILD)/label.a
 	$(CC) -c $(SRC)/button.c -o $(BUILD)/button.a
 	$(CC) -c $(SRC)/textbox.c -o $(BUILD)/textbox.a
+	$(CC) -c $(SRC)/pos_tracker.c -o $(BUILD)/pos_tracker.a
 
 	$(CC) -c $(SRC)/main.c -o $(BUILD)/main.o
 

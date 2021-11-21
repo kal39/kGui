@@ -25,14 +25,13 @@ int main(void) {
 	add_component(g2, 0, 1, create_label("l2"));
 
 	ComponentID g3 = create_window(100, 100, 2, 1, 200, 100, "Window 2");
-	add_component(g3, 0, 0, create_numbox(200, 25, "", print_string));
+	add_component(g3, 0, 0, create_textbox(200, 25, "", print_string));
 
 	ComponentID g4 = create_window(400, 400, 1, 2, 100, 100, "Window 3");
+	ComponentID t1 = add_component(g4, 0, 0, create_pos_tracker());
 
-	int i = 0;
 	while (!WindowShouldClose()) {
-		i++;
-		change_component_text(l1, "i: %d", i);
+		change_component_text(l1, "(%d, %d)", get_pos_tracker_x(t1), get_pos_tracker_y(t1));
 		process_gui();
 		draw_gui();
 	}

@@ -1,5 +1,12 @@
 #include "kGui.h"
 
+void _process_all_components() {
+	for (int i = 0; i < kGS.windowCount; i++) {
+		_process_component(kGS.windows[i].grid, kGS.windows[i].x + kGS.settings.borderSize,
+						   kGS.windows[i].y + kGS.settings.borderSize + kGS.settings.titleBarHeight);
+	}
+}
+
 ComponentID add_component(ComponentID destId, int x, int y, Component component) {
 	Component dest = kGS.components[destId];
 	if (dest.type != 0) return -1;
@@ -9,6 +16,8 @@ ComponentID add_component(ComponentID destId, int x, int y, Component component)
 	kGS.components[kGS.componentCount - 1] = component;
 
 	dest.data.grid.components[x + y * dest.data.grid.cols] = kGS.componentCount - 1;
+
+	_process_all_components();
 
 	return kGS.componentCount - 1;
 }
@@ -77,6 +86,9 @@ void _process_component(ComponentID compID, int x, int y) {
 			break;
 		case 3:
 			_process_textbox(&component->data.textbox, x, y);
+			break;
+		case 4:
+			_process_pos_tracker(&component->data.posTracker, x, y);
 			break;
 	}
 }
