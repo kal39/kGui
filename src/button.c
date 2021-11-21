@@ -30,7 +30,7 @@ void _draw_button(Button *button, int x, int y) {
 void _process_button(Button *button, int x, int y) {
 	int mouseOnButton = _mouse_in_area(x, y, button->width, button->height);
 
-	if (!button->pressed && mouseOnButton && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+	if (mouseOnButton && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 		button->pressed = 1;
 		if (button->fn != NULL) button->fn();
 	}

@@ -97,9 +97,6 @@ void _process_window(Window *w) {
 
 	// bring window to front
 	if (w->dragging || (mouseOnWindow && clickable && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))) {
-		// Window tmp = kGS.windows[kGS.windowCount - 1];
-		// kGS.windows[kGS.windowCount - 1] = *w;
-		// *w = tmp;
 		_move_window_to_front(w);
 	}
 

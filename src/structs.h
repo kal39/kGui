@@ -16,11 +16,6 @@ typedef struct Label {
 	char *text;
 } Label;
 
-typedef struct TextBox {
-	char *text;
-	void (*fn)(char *);
-} TextBox;
-
 typedef struct Button {
 	char *text;
 	int width;
@@ -29,13 +24,23 @@ typedef struct Button {
 	int pressed;
 } Button;
 
+typedef struct Textbox {
+	char *text;
+	int onlyDigits;
+	int width;
+	int height;
+	void (*fn)();
+	int editing;
+	int mouseInBounds;
+} Textbox;
+
 typedef struct Component {
 	int type;
 	union {
 		Grid grid;
 		Label label;
-		TextBox texbox;
 		Button button;
+		Textbox textbox;
 	} data;
 } Component;
 
@@ -65,6 +70,10 @@ typedef struct Settings {
 	int buttonBorderSize;
 	Color buttonReleasedColor;
 	Color buttonPressedColor;
+
+	int textboxBorderSize;
+	Color textboxReleasedColor;
+	Color textboxPressedColor;
 
 } Settings;
 

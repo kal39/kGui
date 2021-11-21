@@ -1,6 +1,6 @@
 #include "kGui.h"
 
-Component create_label(int width, int height, char *text) {
+Component create_label(char *text) {
 	Component component;
 	component.type = 1;
 	component.data.label.text = malloc(strlen(text) + 1);

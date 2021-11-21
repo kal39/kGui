@@ -20,8 +20,11 @@ void change_component_text(ComponentID compId, char *format, ...) {
 		case 1:
 			dest = kGS.components[compId].data.label.text;
 			break;
-		case 3:
+		case 2:
 			dest = kGS.components[compId].data.button.text;
+			break;
+		case 3:
+			dest = kGS.components[compId].data.textbox.text;
 			break;
 		default:
 			return;
@@ -55,6 +58,9 @@ void _draw_component(ComponentID compID, int x, int y) {
 		case 2:
 			_draw_button(&component->data.button, x, y);
 			break;
+		case 3:
+			_draw_textbox(&component->data.textbox, x, y);
+			break;
 	}
 }
 
@@ -68,6 +74,9 @@ void _process_component(ComponentID compID, int x, int y) {
 			break;
 		case 2:
 			_process_button(&component->data.button, x, y);
+			break;
+		case 3:
+			_process_textbox(&component->data.textbox, x, y);
 			break;
 	}
 }

@@ -39,17 +39,20 @@ void _draw_grid(Grid *grid, int x, int y);
 void _process_grid(Grid *grid, int x, int y);
 
 // label
-Component create_label(int width, int height, char *text);
+Component create_label(char *text);
 void _draw_label(Label *label, int x, int y);
-
-// textbox
 
 // button
 Component create_button(int width, int height, char *text, void (*fn)());
 void _draw_button(Button *button, int x, int y);
 void _process_button(Button *button, int x, int y);
 
-// slider
+// textbox
+Component create_textbox(int width, int height, char *text, void (*fn)(char *));
+Component create_numbox(int width, int height, char *text, void (*fn)(char *));
+void _draw_textbox(Textbox *textbox, int x, int y);
+void _process_textbox(Textbox *textbox, int x, int y);
+void _manage_textboxes();
 
 // util
 void _draw_rectangle(Rectangle rectangle, Color color);

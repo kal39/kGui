@@ -23,6 +23,10 @@ void init_gui() {
 	kGS.settings.buttonBorderSize = 2;
 	kGS.settings.buttonReleasedColor = LIGHTGRAY;
 	kGS.settings.buttonPressedColor = GRAY;
+
+	kGS.settings.textboxBorderSize = 2;
+	kGS.settings.textboxReleasedColor = RAYWHITE;
+	kGS.settings.textboxPressedColor = LIGHTGRAY;
 }
 
 void draw_gui() {
@@ -40,6 +44,8 @@ void process_gui() {
 	for (int i = 0; i < kGS.windowCount; i++) {
 		_process_window(&kGS.windows[i]);
 	}
+
+	_manage_textboxes();
 
 	kGS.prevMouseX = GetMouseX();
 	kGS.prevMouseY = GetMouseY();
