@@ -8,7 +8,6 @@ Component create_label(int width, int height, char *text) {
 	return component;
 }
 
-void _draw_label(Label label, int x, int y) {
-	// printf("%s\n", label.text);
-	DrawText(label.text, x, y, kGS.settings.fontSize, kGS.settings.fontColor);
+void _draw_label(Label *label, int x, int y) {
+	DrawText(label->text, x, y, kGS.settings.fontSize, kGS.settings.fontColor);
 }

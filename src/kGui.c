@@ -4,21 +4,24 @@ void init_gui() {
 	kGS.windowCount = 0;
 	kGS.componentCount = 0;
 
+	kGS.prevMouseX = GetMouseX();
+	kGS.prevMouseY = GetMouseY();
+
 	kGS.settings.padding = 4;
 
 	kGS.settings.fontColor = BLACK;
 	kGS.settings.fontSize = 20;
 
-	kGS.settings.windowColor = LIGHTGRAY;
+	kGS.settings.windowColor = RAYWHITE;
 
 	kGS.settings.titleBarHeight = 30;
-	kGS.settings.titleBarColor = GRAY;
+	kGS.settings.titleBarColor = LIGHTGRAY;
 
 	kGS.settings.borderSize = 4;
 	kGS.settings.borderColor = DARKGRAY;
 
 	kGS.settings.buttonBorderSize = 2;
-	kGS.settings.buttonReleasedColor = RAYWHITE;
+	kGS.settings.buttonReleasedColor = LIGHTGRAY;
 	kGS.settings.buttonPressedColor = GRAY;
 }
 
@@ -27,8 +30,17 @@ void draw_gui() {
 	ClearBackground(BLACK);
 
 	for (int i = 0; i < kGS.windowCount; i++) {
-		_draw_window(kGS.windows[i]);
+		_draw_window(&kGS.windows[i]);
 	}
 
 	EndDrawing();
+}
+
+void process_gui() {
+	for (int i = 0; i < kGS.windowCount; i++) {
+		_process_window(&kGS.windows[i]);
+	}
+
+	kGS.prevMouseX = GetMouseX();
+	kGS.prevMouseY = GetMouseY();
 }

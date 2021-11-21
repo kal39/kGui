@@ -43,6 +43,8 @@ typedef struct Window {
 	int x, y;
 	char *title;
 
+	int dragging;
+
 	ComponentID grid;
 } Window;
 
@@ -74,4 +76,7 @@ typedef struct KGuiState {
 	Component *components;
 
 	Settings settings;
+
+	int prevMouseX;
+	int prevMouseY;
 } KGuiState;

@@ -16,11 +16,20 @@ Component create_grid(int cols, int rows, int cellWidth, int cellHeight) {
 	return component;
 }
 
-void _draw_grid(Grid grid, int x, int y) {
-	for (int i = 0; i < grid.rows; i++) {
-		for (int j = 0; j < grid.cols; j++) {
-			_draw_component(grid.components[j + i * grid.cols], x + j * grid.cellWidth + kGS.settings.padding,
-							y + i * grid.cellHeight + kGS.settings.padding);
+void _draw_grid(Grid *grid, int x, int y) {
+	for (int i = 0; i < grid->rows; i++) {
+		for (int j = 0; j < grid->cols; j++) {
+			_draw_component(grid->components[j + i * grid->cols], x + j * grid->cellWidth + kGS.settings.padding,
+							y + i * grid->cellHeight + kGS.settings.padding);
+		}
+	}
+}
+
+void _process_grid(Grid *grid, int x, int y) {
+	for (int i = 0; i < grid->rows; i++) {
+		for (int j = 0; j < grid->cols; j++) {
+			_process_component(grid->components[j + i * grid->cols], x + j * grid->cellWidth + kGS.settings.padding,
+							   y + i * grid->cellHeight + kGS.settings.padding);
 		}
 	}
 }
